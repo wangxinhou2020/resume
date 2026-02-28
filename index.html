@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王新猴 - 个人简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        header .title {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        header .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+        }
+
+        header .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        header .contact-info a:hover {
+            opacity: 1;
+        }
+
+        section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #1a1a2e;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a1a2e;
+            display: inline-block;
+        }
+
+        /* About Me */
+        .about-content {
+            font-size: 1.05em;
+            color: #555;
+        }
+
+        /* Experience & Education */
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #1a1a2e;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.1em;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item .description {
+            color: #555;
+        }
+
+        /* Publications & Patents */
+        .publication-item, .patent-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .publication-item h3, .patent-item h3 {
+            font-size: 1em;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .publication-item .authors, .patent-item .info {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .publication-item .venue, .patent-item .number {
+            color: #888;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            font-size: 1em;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item .icon {
+            width: 40px;
+            height: 40px;
+            background: #1a1a2e;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .contact-item .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .contact-item .value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 40px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>王新猴</h1>
+            <div class="title">交付应用数据与AI软件专家</div>
+            <div class="contact-info">
+                <a href="mailto:wangxinhou@huawei.com">wangxinhou@huawei.com</a>
+                <a href="tel:+8618872207285">+86 188-7220-7285</a>
+                <span>深圳，中国</span>
+            </div>
+        </header>
+
+        <!-- 关于我 -->
+        <section id="about">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <p>[在这里填写你的个人简介，包括研究兴趣、职业目标、主要成就等]</p>
+            </div>
+        </section>
+
+        <!-- 工作经历 -->
+        <section id="experience">
+            <h2>工作经历</h2>
+            
+            <div class="timeline-item">
+                <h3>[公司/机构名称]</h3>
+                <div class="meta">[职位] | [起始年月] - [结束年月/至今]</div>
+                <div class="description">
+                    <ul>
+                        <li>[工作职责/成就 1]</li>
+                        <li>[工作职责/成就 2]</li>
+                        <li>[工作职责/成就 3]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>[公司/机构名称]</h3>
+                <div class="meta">[职位] | [起始年月] - [结束年月]</div>
+                <div class="description">
+                    <ul>
+                        <li>[工作职责/成就 1]</li>
+                        <li>[工作职责/成就 2]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教育经历 -->
+        <section id="education">
+            <h2>教育经历</h2>
+            
+            <div class="timeline-item">
+                <h3>[学位] - [专业]</h3>
+                <div class="meta">[学校名称] | [入学年份] - [毕业年份]</div>
+                <div class="description">
+                    <p>[相关说明，如研究方向、导师、荣誉等]</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>[学位] - [专业]</h3>
+                <div class="meta">[学校名称] | [入学年份] - [毕业年份]</div>
+                <div class="description">
+                    <p>[相关说明]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 论文列表 -->
+        <section id="publications">
+            <h2>论文列表</h2>
+            
+            <div class="publication-item">
+                <h3>[论文标题]</h3>
+                <div class="authors">[作者列表]</div>
+                <div class="venue">[期刊/会议名称], [年份]</div>
+            </div>
+
+            <div class="publication-item">
+                <h3>[论文标题]</h3>
+                <div class="authors">[作者列表]</div>
+                <div class="venue">[期刊/会议名称], [年份]</div>
+            </div>
+        </section>
+
+        <!-- 专利列表 -->
+        <section id="patents">
+            <h2>专利列表</h2>
+            
+            <div class="patent-item">
+                <h3>[专利名称]</h3>
+                <div class="info">发明人: [姓名] | 专利号: [XXXXXX] | 授权日期: [年月]</div>
+            </div>
+
+            <div class="patent-item">
+                <h3>[专利名称]</h3>
+                <div class="info">发明人: [姓名] | 专利号: [XXXXXX] | 授权日期: [年月]</div>
+            </div>
+        </section>
+
+        <!-- 技能 -->
+        <section id="skills">
+            <h2>技能</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>专业技能</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">[技能1]</span>
+                        <span class="skill-tag">[技能2]</span>
+                        <span class="skill-tag">[技能3]</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>编程语言</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>语言能力</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">中文 (母语)</span>
+                        <span class="skill-tag">英语 (CET-6/雅思/托福)</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>工具软件</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">[工具1]</span>
+                        <span class="skill-tag">[工具2]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact">
+            <h2>联系方式</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">✉</div>
+                    <div>
+                        <div class="label">邮箱</div>
+                        <div class="value">your.email@example.com</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div>
+                        <div class="label">电话</div>
+                        <div class="value">+86 XXX-XXXX-XXXX</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">🔗</div>
+                    <div>
+                        <div class="label">GitHub</div>
+                        <div class="value">github.com/yourname</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">💼</div>
+                    <div>
+                        <div class="label">LinkedIn</div>
+                        <div class="value">linkedin.com/in/yourname</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 王新猴. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
