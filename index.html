@@ -11,162 +11,298 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --accent: #ffe66d;
+            --gradient: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            padding: 60px 40px;
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            padding: 80px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        header h1 {
-            font-size: 2.5em;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: white;
             margin-bottom: 10px;
-            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        header .title {
-            font-size: 1.2em;
-            color: #a0a0a0;
+        .hero .title {
+            font-size: 1.5em;
+            color: rgba(255,255,255,0.9);
             margin-bottom: 20px;
         }
 
-        header .contact-info {
+        .hero .contact-info {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            font-size: 0.9em;
         }
 
-        header .contact-info a {
-            color: #fff;
+        .hero .contact-info a {
+            color: white;
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s;
         }
 
-        header .contact-info a:hover {
-            opacity: 1;
+        .hero .contact-info a:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
         }
 
-        section {
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
             padding: 40px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
-        section:last-child {
-            border-bottom: none;
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         h2 {
-            font-size: 1.5em;
-            color: #1a1a2e;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #1a1a2e;
-            display: inline-block;
-        }
-
-        /* About Me */
-        .about-content {
-            font-size: 1.05em;
-            color: #555;
-        }
-
-        /* Experience & Education */
-        .timeline-item {
+            font-size: 1.8em;
+            color: var(--dark);
             margin-bottom: 30px;
-            padding-left: 20px;
-            border-left: 3px solid #1a1a2e;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
+        h2::before {
+            content: '';
+            width: 5px;
+            height: 30px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        /* About */
+        .about-content {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 2;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 30px;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
         }
 
         .timeline-item h3 {
-            font-size: 1.1em;
-            color: #1a1a2e;
-            margin-bottom: 5px;
+            font-size: 1.3em;
+            color: var(--dark);
+            margin-bottom: 8px;
         }
 
         .timeline-item .meta {
-            color: #666;
-            font-size: 0.9em;
+            color: var(--primary);
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
         .timeline-item .description {
+            color: #666;
+        }
+
+        .timeline-item ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 5px;
             color: #555;
         }
 
         /* Publications & Patents */
-        .publication-item, .patent-item {
+        .pub-item {
+            padding: 20px;
             margin-bottom: 20px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #fef9e7 0%, #fffef5 100%);
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
         }
 
-        .publication-item h3, .patent-item h3 {
-            font-size: 1em;
-            color: #1a1a2e;
+        .pub-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .pub-item h3 {
+            font-size: 1.1em;
+            color: var(--dark);
             margin-bottom: 8px;
         }
 
-        .publication-item .authors, .patent-item .info {
+        .pub-item .authors {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.95em;
         }
 
-        .publication-item .venue, .patent-item .number {
-            color: #888;
-            font-size: 0.85em;
+        .pub-item .venue {
+            color: var(--primary);
+            font-size: 0.9em;
             font-style: italic;
+            margin-top: 5px;
         }
 
         /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
 
+        .skill-category {
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
         .skill-category h3 {
-            font-size: 1em;
-            color: #1a1a2e;
-            margin-bottom: 12px;
+            font-size: 1.1em;
+            color: var(--dark);
+            margin-bottom: 15px;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            justify-content: center;
+            gap: 10px;
         }
 
         .skill-tag {
-            background: #1a1a2e;
-            color: #fff;
-            padding: 5px 12px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.85em;
         }
 
-        /* Contact Section */
+        /* Contact */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -176,50 +312,73 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .contact-item .icon {
-            width: 40px;
-            height: 40px;
-            background: #1a1a2e;
-            color: #fff;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-size: 1.5em;
         }
 
         .contact-item .label {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .contact-item .value {
-            color: #333;
-            font-weight: 500;
-        }
-
-        footer {
-            background: #1a1a2e;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
+            color: #888;
             font-size: 0.85em;
         }
 
+        .contact-item .value {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+
+        footer .heart {
+            color: var(--primary);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Mobile */
         @media (max-width: 600px) {
-            header {
-                padding: 40px 20px;
+            .hero h1 {
+                font-size: 2em;
             }
             
-            header h1 {
-                font-size: 1.8em;
+            .hero .title {
+                font-size: 1.2em;
             }
             
-            section {
-                padding: 30px 20px;
+            .container {
+                margin-top: -20px;
+            }
+            
+            .card {
+                padding: 25px;
             }
             
             .contact-info {
@@ -230,135 +389,142 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="avatar">🐵</div>
             <h1>王新猴</h1>
             <div class="title">交付应用数据与AI软件专家</div>
             <div class="contact-info">
-                <a href="mailto:wangxinhou@huawei.com">wangxinhou@huawei.com</a>
-                <a href="tel:+8618872207285">+86 188-7220-7285</a>
-                <span>深圳，中国</span>
+                <a href="mailto:wangxinhou@huawei.com">📧 wangxinhou@huawei.com</a>
+                <a href="tel:+8618872207285">📱 +86 188-7220-7285</a>
+                <span>📍 深圳，中国</span>
             </div>
-        </header>
+        </div>
+    </div>
 
+    <div class="container">
         <!-- 关于我 -->
-        <section id="about">
+        <div class="card" id="about">
             <h2>关于我</h2>
             <div class="about-content">
-                <p>I am now working at GTS Delivery Application Development & SRE Dept, Servcie & Software R&D Mgmt Dept, Global Technical Service Dept(GTS), ICT BG, Huawei Technologies, Co., Ltd now. I recieved my Ph.D. and B.Eng. degrees from the School of Computer Science and Technology, Huazhong University of Science and Technology in 2018 and 2011, respectively. My Ph.D. supervisor is Prof. Hai Jin and my adviser is Prof. Song Wu. I had paid a visit to University of Essex at UK from 5th August, 2015 to 4th February, 2016, under the supervision of Prof. Kun Yang from the Networking Convergence Laboratory (NCL) in the department of Computer Science and Electronic Engineering (CSEE).
-		
-		My general research interests cover the broad area of cloud computing, with special emphasis on resource management, scheduling in cloud computing systems and newly wireless network technology including C-RAN. Also, I am interested in the mobile cloud computing, mobile edge computing or mobile fog computing. Specifically, I am interested in designing new resource allocation algorithms, analyzing their performance, and prototyping those that find practical applications in large-scale computing systems. I am also interested in problems at the intersection of computer networking and economics.</p>
+                <p>我目前在华为技术有限公司全球技术服务部（GTS）交付应用开发与SRE部担任交付应用数据与AI软件专家。我于2018年3月在华中科技大学获得计算机系统结构专业博士学位，师从金海教授和吴松教授。</p>
+                <br>
+                <p>2015年8月至2016年2月，我曾访问英国埃塞克斯大学，在计算机科学与电子工程系的网络融合实验室（NCL），在Kun Yang教授的指导下进行研究。</p>
+                <br>
+                <p>我的研究兴趣涵盖云计算领域，主要包括云系统中的资源管理、调度算法，以及C-RAN等新型无线网络技术。此外，我对移动云计算、移动边缘计算或移动雾计算也很感兴趣。具体来说，我对设计新的资源分配算法、分析其性能，以及在大型计算系统中实现原型感兴趣。我还对计算机网络与经济学交叉领域的问题感兴趣。</p>
             </div>
-        </section>
+        </div>
 
         <!-- 工作经历 -->
-        <section id="experience">
+        <div class="card" id="experience">
             <h2>工作经历</h2>
             
-            <div class="timeline-item">
-                <h3>华为技术有限公司 - GTS交付应用开发与SRE部</h3>
-                <div class="meta">交付应用数据与AI软件专家 | 2024年6月 - 至今</div>
-                <div class="description">
-                    <ul>
-                        <li>负责交付应用数据与AI软件相关工作</li>
-                        <li>参与数据智能创新项目研发</li>
-                    </ul>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>华为技术有限公司 - GTS交付应用开发与SRE部</h3>
+                    <div class="meta">交付应用数据与AI软件专家 | 2024年6月 - 至今</div>
+                    <div class="description">
+                        <ul>
+                            <li>负责交付应用数据与AI软件相关工作</li>
+                            <li>参与数据智能创新项目研发</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="timeline-item">
-                <h3>华为技术有限公司 - 数据智能创新Lab</h3>
-                <div class="meta">主任工程师 | 2021年9月 - 2024年6月</div>
-                <div class="description">
-                    <ul>
-                        <li>从事数据智能创新研究与开发</li>
-                    </ul>
+                <div class="timeline-item">
+                    <h3>华为技术有限公司 - 数据智能创新Lab</h3>
+                    <div class="meta">主任工程师 | 2021年9月 - 2024年6月</div>
+                    <div class="description">
+                        <ul>
+                            <li>从事数据智能创新研究与开发</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="timeline-item">
-                <h3>华为技术有限公司 - Cloud BU 架设部</h3>
-                <div class="meta">高级工程师 | 2018年1月 - 2021年9月</div>
-                <div class="description">
-                    <ul>
-                        <li>负责云架构相关工作</li>
-                    </ul>
+                <div class="timeline-item">
+                    <h3>华为技术有限公司 - Cloud BU 架设部</h3>
+                    <div class="meta">高级工程师 | 2018年1月 - 2021年9月</div>
+                    <div class="description">
+                        <ul>
+                            <li>负责云架构相关工作</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- 教育经历 -->
-        <section id="education">
+        <div class="card" id="education">
             <h2>教育经历</h2>
             
-            <div class="timeline-item">
-                <h3>博士 - 计算机系统结构</h3>
-                <div class="meta">华中科技大学 | 2012年9月 - 2018年3月</div>
-                <div class="description">
-                    <p>导师：金海教授、吴松教授</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>博士 - 计算机系统结构</h3>
+                    <div class="meta">华中科技大学 | 2012年9月 - 2018年3月</div>
+                    <div class="description">
+                        导师：金海教授、吴松教授
+                    </div>
                 </div>
-            </div>
 
-            <div class="timeline-item">
-                <h3>硕士 - 计算机系统结构</h3>
-                <div class="meta">华中科技大学 | 2011年9月 - 2012年6月</div>
-                <div class="description">
-                    <p></p>
+                <div class="timeline-item">
+                    <h3>硕士 - 计算机系统结构</h3>
+                    <div class="meta">华中科技大学 | 2011年9月 - 2012年6月</div>
+                    <div class="description">
+                    </div>
                 </div>
-            </div>
 
-            <div class="timeline-item">
-                <h3>本科 - 计算机科学与技术</h3>
-                <div class="meta">华中科技大学 | 2007年9月 - 2011年6月</div>
-                <div class="description">
-                    <p></p>
+                <div class="timeline-item">
+                    <h3>本科 - 计算机科学与技术</h3>
+                    <div class="meta">华中科技大学 | 2007年9月 - 2011年6月</div>
+                    <div class="description">
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- 论文列表 -->
-        <section id="publications">
+        <div class="card" id="publications">
             <h2>论文列表</h2>
             
-            <div class="publication-item">
+            <div class="pub-item">
                 <h3>[论文标题]</h3>
                 <div class="authors">[作者列表]</div>
                 <div class="venue">[期刊/会议名称], [年份]</div>
             </div>
 
-            <div class="publication-item">
+            <div class="pub-item">
                 <h3>[论文标题]</h3>
                 <div class="authors">[作者列表]</div>
                 <div class="venue">[期刊/会议名称], [年份]</div>
             </div>
-        </section>
+        </div>
 
         <!-- 专利列表 -->
-        <section id="patents">
+        <div class="card" id="patents">
             <h2>专利列表</h2>
             
-            <div class="patent-item">
+            <div class="pub-item">
                 <h3>[专利名称]</h3>
-                <div class="info">发明人: [姓名] | 专利号: [XXXXXX] | 授权日期: [年月]</div>
+                <div class="authors">发明人: 王新猴 | 专利号: [XXXXXX] | 授权日期: [年月]</div>
             </div>
 
-            <div class="patent-item">
+            <div class="pub-item">
                 <h3>[专利名称]</h3>
-                <div class="info">发明人: [姓名] | 专利号: [XXXXXX] | 授权日期: [年月]</div>
+                <div class="authors">发明人: 王新猴 | 专利号: [XXXXXX] | 授权日期: [年月]</div>
             </div>
-        </section>
+        </div>
 
         <!-- 技能 -->
-        <section id="skills">
+        <div class="card" id="skills">
             <h2>技能</h2>
             
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>专业技能</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">[技能1]</span>
-                        <span class="skill-tag">[技能2]</span>
-                        <span class="skill-tag">[技能3]</span>
+                        <span class="skill-tag">云计算</span>
+                        <span class="skill-tag">资源管理</span>
+                        <span class="skill-tag">边缘计算</span>
                     </div>
                 </div>
 
@@ -375,22 +541,23 @@
                     <h3>语言能力</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">中文 (母语)</span>
-                        <span class="skill-tag">英语 (CET-6/雅思/托福)</span>
+                        <span class="skill-tag">英语 (CET-6)</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h3>工具软件</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">[工具1]</span>
-                        <span class="skill-tag">[工具2]</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Docker</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- 联系方式 -->
-        <section id="contact">
+        <div class="card" id="contact">
             <h2>联系方式</h2>
             
             <div class="contact-grid">
@@ -417,13 +584,12 @@
                         <div class="value">github.com/wangxinhou2020</div>
                     </div>
                 </div>
-
             </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 王新猴. All rights reserved.</p>
-        </footer>
+        </div>
     </div>
+
+    <footer>
+        <p>Made with <span class="heart">❤️</span> by 王新猴 | © 2026</p>
+    </footer>
 </body>
 </html>
